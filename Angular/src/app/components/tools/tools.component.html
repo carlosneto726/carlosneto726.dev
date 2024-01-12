@@ -1,0 +1,61 @@
+<div class="container py-5 my-5">
+
+    <div class="mx-auto -container">
+        <h1 class="py-5 my-5">Languages
+            <h6>Languages i have some domain</h6>
+        </h1>
+
+        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3">
+            @for (lang_name of langs | keyvalue; track lang_name) {
+            <div>
+                <span class="badge rounded-pill"
+                    [ngStyle]="{'background-color': '#'+colors[lang_name.key+'']}">&nbsp;&nbsp;</span>
+                {{ lang_name.key }}: {{ lang_name.value }}%
+            </div>
+            }
+        </div>
+
+        <div class="py-5 my-5">
+            <div class="progress-stacked">
+                @for (lang of langs | keyvalue; track lang) {
+
+                <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    [ngStyle]="{'width': lang.value+'%'}" title="{{ lang.key }}">
+                    <div class="progress-bar" [ngStyle]="{'background-color': '#'+colors[lang.key+'']}"></div>
+                </div>
+                }
+            </div>
+        </div>
+
+        <h1 class="py-5 my-5">Frameworks / Libralies
+            <h6>Frameworks and Libralies i have some experience</h6>
+        </h1>
+
+        <div class="py-5">
+            <div class="container">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    @for (frameLibs of frameworksLibralies; track frameLibs) {
+
+                        @if(frameLibs.img){
+                            <a class="col-lg-4  frame-libs" href="{{ frameLibs.link }}" target="_blank" align="center">
+                                <img class="img-fluid" src="{{ frameLibs.img}}" width="140" height="140" alt="">
+                                <h2 class="fw-normal">{{ frameLibs.name }}</h2>
+                                <p>{{ frameLibs.description }}</p>
+                            </a>
+                        }
+                        @else {
+                            <a class="col-lg-4  frame-libs" href="{{ frameLibs.link }}" target="_blank" align="center">
+                                <h2 class="fw-normal my-5 py-4">{{ frameLibs.name }}</h2>
+                                <p>{{ frameLibs.description }}</p>
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,41 @@
+<div class="mx-auto -container">
+    <h1 class="py-5 my-5">Projects
+        <h6>Some of my biggest projects and works</h6>
+    </h1>
+    
+    @for (project of projects; track project) {
+        <div class="my-3 p-3 rounded project-card mx-auto">
+            <h6 class="pb-2 mb-0">{{ project.name }}</h6>
+            <div class="row g-5 d-flex py-3">
+                <div class="col-md-6 fit-content">
+                    <img src="{{ project.img_url }}" alt="Carlos Henrique Neto" class="img-fluid rounded project-img">
+                </div>
+                <div class="col-md-6 d-flex flex-column">
+                    <div>{{ project.description }}</div>
+                    <div class="mt-auto">
+                        @if (project.homepage_url) {
+                            <a href="{{ project.homepage_url }}" target="_blank">
+                                <img class="ms-1 mb-1" src="../../../assets/box-arrow-up-right.svg" alt="homepage">
+                            </a>
+                        }
+                        @if (project.github_repo_url) {
+                            <a href="{{ project.homepage_url }}" target="_blank">
+                                <img class="ms-1 mb-1" src="../../../assets/github.svg" alt="github repository">
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+    
+    
+            <small class="d-block mt-3">
+                @for (language of project.languages; track language) {
+                    <small class="badge bg-success-subtle text-success-emphasis rounded-pill mx-1">
+                        {{ language }}
+                    </small>
+                }
+            </small>
+        </div>
+    }
+
+</div>
